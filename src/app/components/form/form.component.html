@@ -1,0 +1,64 @@
+<div class="form">
+  <h2>人员登记系统</h2>
+
+  <ul>
+    <li>
+      <label for=""> 姓名：</label>
+      <input type="text" [(ngModel)]="userInfo.name" />
+    </li>
+
+    <li>
+      <label for="">性别：</label>
+      <input
+        type="radio"
+        value="1"
+        id="sex1"
+        name="sex"
+        [(ngModel)]="userInfo.sex"
+      />
+      <label for="sex1">男</label>
+      <input
+        type="radio"
+        value="0"
+        id="sex2"
+        name="sex"
+        [(ngModel)]="userInfo.sex"
+      />
+      <label for="sex2">女</label>
+    </li>
+
+    <li>
+      <label for="">城市：</label>
+      <select name="" id="" [(ngModel)]="userInfo.city">
+        <option [value]="item" *ngFor="let item of userInfo.cityList">
+          {{item}}
+      </option>
+      </select>
+    </li>
+
+    <li>
+      <label for="">爱好：</label>
+      <span *ngFor="let item of userInfo.hobbys; index as i">
+        <input type="checkbox" [id]="'hobby' + i" [(ngModel)]="item.checked" />
+        <label [for]="'hobby' + i">{{ item.name }}</label>
+      </span>
+    </li>
+
+    <li>
+      <label for="">备注：</label>
+      <textarea name="" id="" cols="30" rows="3" 
+      [(ngModel)]="userInfo.mark"></textarea>
+    </li>
+
+    <li>
+      <button (click)="submitUserInfo();">提交</button>
+    </li>
+  </ul>
+
+  <div>
+    <pre
+      >{{ userInfo | json }}
+  </pre
+    >
+  </div>
+</div>
