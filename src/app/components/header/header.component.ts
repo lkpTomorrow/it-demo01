@@ -12,4 +12,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  run(){
+    console.log('我是header里面的run方法222')
+  }
 }

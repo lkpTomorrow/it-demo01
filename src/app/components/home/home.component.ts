@@ -1,29 +1,32 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, AfterViewInit } from "@angular/core";
 
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
+
   constructor() {}
 
-  public msg: string = "我是msg";
-  public msg2: string = "我是msg";
-  public list1: any[];
-  public list2: string[];
-  public list3: Array<any>;
-  public list4: Array<number>;
+  public showBoxFlag:boolean= true;
 
-  public ojb: object = [];
+  ngOnInit(){
+    let box1:any= document.getElementById('box1');
+    console.log(box1);
+    box1.style.color='red';
 
-  ngOnInit() {
-    this.list3 = ["11", 22, { name: "zs" }];
+    // let box2:any= document.getElementById('box2');
+    // console.log(box2);
+    // box2.style.color='red';
   }
 
-  getBtnDom(e) {
-    const dom = e.target;
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
 
-    dom.style.color = "red";
+    let box2:any= document.getElementById('box2');
+    console.log(box2);
+    box2.style.color='blue';
   }
 }

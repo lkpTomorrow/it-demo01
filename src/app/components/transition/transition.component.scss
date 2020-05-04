@@ -1,0 +1,17 @@
+.transtion{
+
+
+  .content{
+
+  }
+  .aside{
+    width: 200px;
+    height: 100%;
+    background: #ccc;
+    position: absolute;
+    top:0;
+    right:0;
+
+    transition:all 2s;
+  }
+}

@@ -12,6 +12,7 @@ import {FormsModule} from '@angular/forms';
 import { SearchComponent } from './components/search/search.component';
 import { TodolistComponent } from './components/todolist/todolist.component'
 import { StorageService } from './services/storage.service';
+import { TransitionComponent } from './components/transition/transition.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { StorageService } from './services/storage.service';
     HeaderComponent,
     FormComponent,
     SearchComponent,
-    TodolistComponent
+    TodolistComponent,
+    TransitionComponent
   ],
   imports: [
     BrowserModule,
