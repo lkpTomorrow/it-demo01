@@ -1,17 +1,27 @@
+import { StorageService } from './../../services/storage.service';
 import { Component, OnInit } from "@angular/core";
 
+
+// var storage= new StorageService();
 @Component({
   selector: "app-todolist",
   templateUrl: "./todolist.component.html",
   styleUrls: ["./todolist.component.scss"]
 })
 export class TodolistComponent implements OnInit {
-  constructor() {}
+  constructor(
+    public storage:StorageService
+  ) {}
 
   public keywords: string = "";
   public todolist: any[] = [];
 
-  ngOnInit() {}
+  ngOnInit() {
+    const todolist= this.storage.get('todolist');
+    if(todolist){
+      this.todolist= todolist||[];
+    }
+  }
 
   search(e) {
     // console.log('keyCode:',e.keyCode);
@@ -27,6 +37,8 @@ export class TodolistComponent implements OnInit {
           title: this.keywords,
           status: false
         });
+
+        this.storage.set('todolist',this.todolist);
       }else{
         console.log('已经有了该项');
       }
@@ -35,10 +47,13 @@ export class TodolistComponent implements OnInit {
     }
   }
 
+  // 删除
   delete(index) {
     this.todolist.splice(index, 1);
+    this.storage.set('todolist',this.todolist);
   }
 
+  // list中是否包含keywords的值
   listHasKeywords() {
     for (var i = 0; i < this.todolist.length; i++) {
       if (this.todolist[i].title == this.keywords) {
@@ -48,7 +63,7 @@ export class TodolistComponent implements OnInit {
     return false;
   }
 
-
+  // 获取代办和已完成的长度
   get todoLength(){
     return this.todolist.filter((v,k)=>{
       return !v.status;
@@ -58,5 +73,11 @@ export class TodolistComponent implements OnInit {
 
   get doneLength(){
     return this.todolist.filter(v=>v.status).length;
+  }
+
+  // 改变状态：
+  changeStatus(){
+    console.log('change执行了');
+    this.storage.set('todolist',this.todolist);
   }
 }

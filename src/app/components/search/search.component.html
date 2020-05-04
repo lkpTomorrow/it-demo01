@@ -1,7 +1,8 @@
 <!-- search组件，模拟京东商城的历史记录 -->
 
 <div class="search">
-
+  <h2>京东搜索功能  </h2>
+  <div>共享数据： <button (click)="changeData()"> 按钮</button></div>
   <!-- 搜索框 -->
   <input type="text" [(ngModel)]="keywords">
   <button (click)="search();">搜索</button>

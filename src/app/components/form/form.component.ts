@@ -22,6 +22,7 @@ export class FormComponent implements OnInit {
     mark:'',
   }
   ngOnInit() {
+    
   }
 
   submitUserInfo(){

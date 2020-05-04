@@ -11,7 +11,8 @@
         <ng-container *ngFor="let item of todolist;index as i;">
             <li *ngIf="!item.status">
               
-              <input type="checkbox" [(ngModel)]="item.status">
+              <input type="checkbox" [(ngModel)]="item.status"
+              (ngModelChange)='changeStatus();'>
               
               
               {{ item.title }}
@@ -27,7 +28,8 @@
     <ul>
       <ng-container *ngFor="let item of todolist;index as i;">
         <li *ngIf="item.status">
-            <input type="checkbox" [(ngModel)]="item.status">
+            <input type="checkbox" [(ngModel)]="item.status"
+            (ngModelChange)='changeStatus();'>
           {{ item.title }}
           <button (click)="delete(i);">删除</button>
         </li>
