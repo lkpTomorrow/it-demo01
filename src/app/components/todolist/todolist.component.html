@@ -1,0 +1,37 @@
+<div class="todolist">
+  <h2>todolist</h2>
+
+  <div>
+    <input type="text" [(ngModel)]="keywords" (keyup)="search($event)" />
+  </div>
+
+  <div>
+      <h4>待办事项 <span>{{todoLength}}</span></h4>
+    <ul>
+        <ng-container *ngFor="let item of todolist;index as i;">
+            <li *ngIf="!item.status">
+              
+              <input type="checkbox" [(ngModel)]="item.status">
+              
+              
+              {{ item.title }}
+              <button (click)="delete(i);">删除</button>
+            </li>
+          </ng-container>
+      
+    </ul>
+  </div>
+
+  <div>
+    <h4>已完成事项 <span>{{doneLength}}</span></h4>
+    <ul>
+      <ng-container *ngFor="let item of todolist;index as i;">
+        <li *ngIf="item.status">
+            <input type="checkbox" [(ngModel)]="item.status">
+          {{ item.title }}
+          <button (click)="delete(i);">删除</button>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</div>

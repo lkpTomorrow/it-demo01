@@ -1,0 +1,23 @@
+<!-- search组件，模拟京东商城的历史记录 -->
+
+<div class="search">
+
+  <!-- 搜索框 -->
+  <input type="text" [(ngModel)]="keywords">
+  <button (click)="search();">搜索</button>
+
+  <!-- 列表 -->
+  <ul>
+    <li *ngFor="let item of list;index as i;">
+      
+      <span>{{item}}</span>
+
+      <!-- delete -->
+      <button (click)="delete(i);">删除</button>
+    </li>
+  </ul>
+
+
+
+
+</div>
